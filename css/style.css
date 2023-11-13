@@ -9,5 +9,28 @@ body {
 }
 
 .board {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: lightgreen;
+    padding: 40px 60px;
     
+}
+
+h1 {
+    font-size: 4vmin;
+    color: #0E1C36;
+    letter-spacing: .5vmin;
+    font-family: 'Roboto Slab', serif;
+}
+
+.reset {
+    margin-top: 4vmin;
+  padding: 2vmin;
+  font-size: 2vmin;
+  border-radius: 4vmin;
+  border: 0.5 solid black;
+  color: #4D7EA8;
 }
