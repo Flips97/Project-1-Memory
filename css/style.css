@@ -8,15 +8,16 @@ body {
 
 }
 
-.board {
+.container {
+    height: 80vh;
+    width: 80vh;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background: lightgreen;
-    padding: 40px 60px;
-    
+    padding: 40px 60px;      
 }
 
 h1 {
@@ -27,10 +28,22 @@ h1 {
 }
 
 .reset {
-    margin-top: 4vmin;
+  margin-top: 4vmin;
   padding: 2vmin;
   font-size: 2vmin;
   border-radius: 4vmin;
   border: 0.5 solid black;
   color: #4D7EA8;
 }
+
+.reset:hover {
+    color: white;
+    background-color: darkgrey;
+}
+
+/* .board {
+    display: grid;
+    grid-template-columns: repeat(5, 30vmin); 
+    grid-template-rows: repeat(5, 30vmin); 
+    
+} */
