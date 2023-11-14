@@ -1,5 +1,7 @@
 /*----- constants -----*/
-
+const pokemons = [
+    
+]
 
 /*----- state variables -----*/
 let board;
@@ -14,7 +16,7 @@ const resetGameBtn = document.querySelector('button');
 const cards = [... document.querySelectorAll(".card")];
 
 /*----- event listeners -----*/
-
+cards.forEach((card) => card.addEventListener('click', cardClick));
 
 /*----- functions -----*/
 
@@ -50,3 +52,8 @@ function renderMessage() {
 function renderControls() {
 
 };
+
+function cardClick(evt) {
+    const indexNum = cards.indexOf(evt.target);
+    console.log(indexNum)
+}

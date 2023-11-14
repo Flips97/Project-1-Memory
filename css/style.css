@@ -49,7 +49,7 @@ h1 {
     background-color: lightseagreen;    
 }
 
-.board > div {
+#board > div {
     border: 0.1vmin solid black;
     background-color: #219EBC;
 }
