@@ -41,7 +41,7 @@ h1 {
     background-color: darkgrey;
 }
 
-.board {
+#board {
     display: grid;
     grid-template-columns: repeat(5, 17vmin); 
     grid-template-rows: repeat(2, 15vmin);
