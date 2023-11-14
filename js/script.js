@@ -13,7 +13,7 @@ let winner;
 
 /*----- functions -----*/
 
-Init();
+init();
 
 function init() {
 
@@ -21,7 +21,7 @@ function init() {
         [0, 0, 0, 0, 0], //col 0
         [0, 0, 0, 0, 0], //col 1
     ];
-console.log(board)
+
 }
 
 
