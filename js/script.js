@@ -1,6 +1,6 @@
 /*----- constants -----*/
 const pokemons = [
-    
+    {name: bulbasaur, }
 ]
 
 /*----- state variables -----*/
