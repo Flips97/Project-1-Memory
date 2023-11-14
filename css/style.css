@@ -41,9 +41,15 @@ h1 {
     background-color: darkgrey;
 }
 
-/* .board {
+.board {
     display: grid;
-    grid-template-columns: repeat(5, 30vmin); 
-    grid-template-rows: repeat(5, 30vmin); 
-    
-} */
+    grid-template-columns: repeat(5, 17vmin); 
+    grid-template-rows: repeat(2, 15vmin);
+    gap: 1.5vmin; 
+    background-color: lightseagreen;    
+}
+
+.board > div {
+    border: 0.1vmin solid black;
+    background-color: #219EBC;
+}
