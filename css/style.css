@@ -52,4 +52,8 @@ h1 {
 #board > div {
     border: 0.1vmin solid black;
     background-color: #219EBC;
+    display: flex;
+    justify-items: center;
+    justify-content: center;   
 }
+
