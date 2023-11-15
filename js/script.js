@@ -14,6 +14,7 @@ let match;
 let winner;
 let cardSet;
 let faceDown;
+let firstPick = null;
 
 /*----- cached elements  -----*/
 const boardEl = document.getElementById('board');
@@ -93,8 +94,16 @@ function renderMessage() {
 
 
 function cardClick(evt) {    
-    console.log(board[evt.target.id])
-    
-    // change the card in my board array to be flipped = true
-    // then render
+    console.log(board[evt.target.id])    
+    board[evt.target.id].flipped = true
+        if(firstPick === null) {
+            firstPick = board[evt.target.id]
+        }else {
+            firstPick !== null
+            console.log('firstpick is already done, this is the second pick')
+        }
 }
+        
+    
+    render();    
+
