@@ -13,17 +13,17 @@ let turn;
 let match;
 let winner;
 let cardSet;
+let faceDown;
 
 /*----- cached elements  -----*/
 const boardEl = document.getElementById('board');
 const msgEl = document.querySelector('h2');
 const resetGameBtn = document.querySelector('button');
-const cards = [... document.querySelectorAll(".card")];
 
 
 
 /*----- event listeners -----*/
-cards.forEach((card) => card.addEventListener('click', cardClick));
+boardEl.addEventListener('click', cardClick);
 
 
 
@@ -32,33 +32,27 @@ cards.forEach((card) => card.addEventListener('click', cardClick));
 init();
 
 function init() {
+    shuffleCards();
+    board = createCards();
 
-board = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    
-];
-
-match = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-turn = 1;
-winner = null;
-render();
+    turn = 1;
+    winner = null;
+    render();
 }
 
 
 
-function render() {
-    renderShuffleCards();
+function render() {    
     renderBoard();
-    renderMessage();
-    renderControls();
+    renderMessage();    
 }
 
-function renderShuffleCards() {
+function shuffleCards() {
     cardSet = pokemons.concat(pokemons); //gives me two of each pokemon    
     //shuffle
     for(let i = 0; i < cardSet.length; i++) {
         let m = Math.floor(Math.random() * cardSet.length); //get random index
-        //swap
+        //shuffle
         let temp = cardSet[i];
         cardSet[i] = cardSet[m];
         cardSet[m] = temp;        
@@ -66,19 +60,41 @@ function renderShuffleCards() {
     console.log(cardSet);
 }
 
+function createCards() {
+    const cards = cardSet.map(pokemon=> {
+        return {
+            pokemon,
+            flipped: false
+        }        
+    })
+    return cards
+}
+
 function renderBoard() {
-   
+   board.forEach((card, idx) => {
+    if(card.flipped) {
+        const cardEl = document.getElementById(idx)
+        const imgEl = document.createElement('img')
+        imgEl.setAttribute("src", "imgs/" + card.pokemon + ".jpg") 
+        cardEl.innerHTML = ''
+        cardEl.appendChild(imgEl)
+    }
+    
+
+    
+    
+   })
 };
 
 function renderMessage() {
     
 };
 
-function renderControls() {
 
-};
 
-function cardClick(evt) {
-    const indexNum = cards.indexOf(evt.target);
-    console.log(indexNum)
+function cardClick(evt) {    
+    console.log(board[evt.target.id])
+    
+    // change the card in my board array to be flipped = true
+    // then render
 }
