@@ -9,11 +9,8 @@ const pokemons = [
 
 /*----- state variables -----*/
 let board;
-let turn;
-let match;
 let winner;
 let cardSet;
-let faceDown;
 let firstPick = null;
 let checkBoard;
 /*----- cached elements  -----*/
@@ -94,10 +91,7 @@ function renderMessage() {
         msgEl.innerText = "Now try and match this card to it's pair"
     } else if (firstPick.pokemon !== board[evt.target.id].pokemon) {
         msgEl.innerText = "No luck! Try again"
-    }
-    
-    
-    
+    }   
     
 };
 
