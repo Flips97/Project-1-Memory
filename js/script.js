@@ -12,7 +12,7 @@ let board;
 let winner;
 let cardSet;
 let firstPick = null;
-let checkBoard;
+
 /*----- cached elements  -----*/
 const boardEl = document.getElementById('board');
 const msgEl = document.querySelector('h2');
@@ -86,12 +86,14 @@ function renderMessage() {
     if(winner) {
         msgEl.innerText = "Winner! You have matched all the cards!";
     } else if (firstPick === null) {
-        msgEl.innerText = "Flip a card and try to match it"
+        msgEl.innerText = "Flip a card and try to match it";
     } else if (firstPick !== null){
         msgEl.innerText = "Now try and match this card to it's pair"
-    } else if (firstPick.pokemon !== board[evt.target.id].pokemon) {
-        msgEl.innerText = "No luck! Try again"
-    }   
+    // } else if (firstPick === board[evt.target.id]) {
+    //     msgEl.innerText = "Pair, Nice job";
+    // } else {
+    //     msgEl.innerText = "No luck, try again"
+    } 
     
 };
 
@@ -107,19 +109,21 @@ function cardClick(evt) {
         firstPick = null 
         checkWinner()              
     } else {
+        boardEl.removeEventListener('click', cardClick)
         setTimeout(function() {
             firstPick.flipped = false;
             board[evt.target.id].flipped = false;
-            firstPick = null            
+            firstPick = null
+            boardEl.addEventListener('click', cardClick)            
             render();
-        }, 2000)  
+        }, 2000);   
     }    
     render();    
 }
 
 
 function checkWinner() {
-    checkBoard = board.every((card) => card.flipped === true)
+    const checkBoard = board.every((card) => card.flipped === true)
     if (checkBoard) {
         winner = true
     }    
