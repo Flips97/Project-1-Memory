@@ -37,7 +37,7 @@ function init() {
     board = createCards();
 
     turn = 1;
-    winner = null;
+    winner = false;
     render();
 }
 
@@ -72,34 +72,47 @@ function createCards() {
 }
 
 function renderBoard() {
-   board.forEach((card, idx) => {
-    if(card.flipped) {
+    board.forEach((card, idx) => {
         const cardEl = document.getElementById(idx)
-        const imgEl = document.createElement('img')
-        imgEl.setAttribute("src", "imgs/" + card.pokemon + ".jpg") 
         cardEl.innerHTML = ''
-        cardEl.appendChild(imgEl)
-    }
-    
-
-    
+        if(card.flipped) {
+            const imgEl = document.createElement('img')
+            imgEl.setAttribute("src", "imgs/" + card.pokemon + ".jpg") 
+            cardEl.appendChild(imgEl)
+        }      
     
    })
 };
 
 function renderMessage() {
-    
+    // if(winner)
 };
 
 
 
-function cardClick(evt) {    
+function cardClick(evt) { 
+    if(!board[evt.target.id] || board[evt.target.id].flipped) return   
     console.log(board[evt.target.id])    
     board[evt.target.id].flipped = true
     if(firstPick === null) {
         firstPick = board[evt.target.id]
-    }else {        
-        
-    }
+    } else if (firstPick.pokemon === board[evt.target.id].pokemon){ 
+        firstPick = null 
+        checkWinner()              
+    } else {
+        setTimeout(function() {
+            firstPick.flipped = false;
+            board[evt.target.id].flipped = false;
+            firstPick = null            
+            render();
+        }, 3000)  
+    }    
     render();    
+}
+
+function checkWinner() {
+
+    // Check board array to see if EVERY card obj. is flipped (true)
+    // If every card obj. is flipped set winner to true
+    // 
 }
