@@ -96,14 +96,10 @@ function renderMessage() {
 function cardClick(evt) {    
     console.log(board[evt.target.id])    
     board[evt.target.id].flipped = true
-        if(firstPick === null) {
-            firstPick = board[evt.target.id]
-        }else {
-            firstPick !== null
-            console.log('firstpick is already done, this is the second pick')
-        }
-}
+    if(firstPick === null) {
+        firstPick = board[evt.target.id]
+    }else {        
         
-    
+    }
     render();    
-
+}
