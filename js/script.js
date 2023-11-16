@@ -15,7 +15,7 @@ let winner;
 let cardSet;
 let faceDown;
 let firstPick = null;
-
+let checkBoard;
 /*----- cached elements  -----*/
 const boardEl = document.getElementById('board');
 const msgEl = document.querySelector('h2');
@@ -25,7 +25,7 @@ const resetGameBtn = document.querySelector('button');
 
 /*----- event listeners -----*/
 boardEl.addEventListener('click', cardClick);
-
+resetGameBtn.addEventListener('click', init);
 
 
 /*----- functions -----*/
@@ -47,6 +47,7 @@ function render() {
     renderBoard();
     renderMessage();    
 }
+
 
 function shuffleCards() {
     cardSet = pokemons.concat(pokemons); //gives me two of each pokemon    
@@ -80,12 +81,24 @@ function renderBoard() {
             imgEl.setAttribute("src", "imgs/" + card.pokemon + ".jpg") 
             cardEl.appendChild(imgEl)
         }      
-    
-   })
+        
+    })
 };
 
 function renderMessage() {
-    // if(winner)
+    if(winner) {
+        msgEl.innerText = "Winner! You have matched all the cards!";
+    } else if (firstPick === null) {
+        msgEl.innerText = "Flip a card and try to match it"
+    } else if (firstPick !== null){
+        msgEl.innerText = "Now try and match this card to it's pair"
+    } else if (firstPick.pokemon !== board[evt.target.id].pokemon) {
+        msgEl.innerText = "No luck! Try again"
+    }
+    
+    
+    
+    
 };
 
 
@@ -105,14 +118,15 @@ function cardClick(evt) {
             board[evt.target.id].flipped = false;
             firstPick = null            
             render();
-        }, 3000)  
+        }, 2000)  
     }    
     render();    
 }
 
-function checkWinner() {
 
-    // Check board array to see if EVERY card obj. is flipped (true)
-    // If every card obj. is flipped set winner to true
-    // 
-}
+function checkWinner() {
+    checkBoard = board.every((card) => card.flipped === true)
+    if (checkBoard) {
+        winner = true
+    }    
+}    
