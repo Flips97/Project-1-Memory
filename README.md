@@ -7,6 +7,5 @@
 -index.html
 -css/style.css
 -script/js
--imgs
 ### Getting Started: 
 [memory-game](https://flips97.github.io/Project-1-Memory/)
