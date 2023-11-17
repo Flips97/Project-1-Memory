@@ -17,7 +17,7 @@ body {
     align-items: center;
     flex-direction: column;
     background: lightgreen;
-    padding: 40px 60px;      
+    padding: 40px 60px;    
 }
 
 h1 {
@@ -54,6 +54,11 @@ h1 {
     background-color: #219EBC;
     display: flex;
     justify-items: center;
-    justify-content: center;   
+    justify-content: center;
+    object-fit: contain; 
 }
 
+.card img {
+    height: 100%;
+    width: 100%;
+}

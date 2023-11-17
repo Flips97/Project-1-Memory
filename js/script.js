@@ -47,11 +47,9 @@ function render() {
 
 
 function shuffleCards() {
-    cardSet = pokemons.concat(pokemons); //gives me two of each pokemon    
-    //shuffle
+    cardSet = pokemons.concat(pokemons);    
     for(let i = 0; i < cardSet.length; i++) {
-        let m = Math.floor(Math.random() * cardSet.length); //get random index
-        //shuffle
+        let m = Math.floor(Math.random() * cardSet.length);
         let temp = cardSet[i];
         cardSet[i] = cardSet[m];
         cardSet[m] = temp;        
@@ -77,8 +75,7 @@ function renderBoard() {
             const imgEl = document.createElement('img')
             imgEl.setAttribute("src", "imgs/" + card.pokemon + ".jpg") 
             cardEl.appendChild(imgEl)
-        }      
-        
+        }        
     })
 };
 
@@ -88,16 +85,9 @@ function renderMessage() {
     } else if (firstPick === null) {
         msgEl.innerText = "Flip a card and try to match it";
     } else if (firstPick !== null){
-        msgEl.innerText = "Now try and match this card to it's pair"
-    // } else if (firstPick === board[evt.target.id]) {
-    //     msgEl.innerText = "Pair, Nice job";
-    // } else {
-    //     msgEl.innerText = "No luck, try again"
-    } 
-    
+        msgEl.innerText = "Now try and match this card to it's pair"   
+    }     
 };
-
-
 
 function cardClick(evt) { 
     if(!board[evt.target.id] || board[evt.target.id].flipped) return   
